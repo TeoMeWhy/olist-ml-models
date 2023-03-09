@@ -16,12 +16,12 @@ Passaremos por todas etapas do ciclo analítico, desde ETL das fontes de dados, 
 
 | Data/Hora | Tema | Link |
 | --- | --- | --- |
-| 03/04/23 20hrs BR | Introdução à ML + Definição do problema | --- |
-| 04/04/23 20hrs BR | Brainstorm de variáveis + Criação Feature Store Pt. 1 | --- |
-| 05/04/23 20hrs BR | Criação Feature Store Pt. 2 | --- |
-| 06/04/23 20hrs BR | Criação da ABT | --- |
-| 07/04/23 20hrs BR | Treinando algoritmos com MLflow | --- |
-| 10/04/23 20hrs BR | Escolhendo melhor algoritmo + Deploy | --- |
+| 03/04/23 20hrs BR | Introdução à ML + Definição do problema | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=94801bcb-c6ff-48d2-9b66-a818a5fa0571) |
+| 04/04/23 20hrs BR | Brainstorm de variáveis + Criação Feature Store Pt. 1 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=45919433-bed9-4783-9ab8-3965149115dc) |
+| 05/04/23 20hrs BR | Criação Feature Store Pt. 2 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5de9cb10-518b-4fe6-b128-5556fa492ea8) |
+| 06/04/23 20hrs BR | Criação da ABT | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=24099f20-c017-4f79-a598-2a4b4aca460e) |
+| 07/04/23 20hrs BR | Treinando algoritmos com MLflow | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=48343bdd-6abf-4c66-a452-d6c3702f8e91) |
+| 10/04/23 20hrs BR | Escolhendo melhor algoritmo + Deploy | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5a083e57-cbaf-4117-83e4-77b294f9d8ff) |
 
 ## Sobre o instrutor
 
