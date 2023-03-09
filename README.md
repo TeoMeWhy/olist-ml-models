@@ -15,7 +15,7 @@ O projeto será 100% ao vivo na Twitch, canal [Téo Me Why](https://www.twitch.t
 Passaremos por todas etapas do ciclo analítico, desde ETL das fontes de dados, criação de `feature store`, criação da `ABT` (_Analytical Base Table_), treinamento dos algoritmos, implementação do algoritmo campeão para novas predições. Utilizaremos ainda o `MLFlow` para gestão de nossos modelos.
 
 | Data/Hora | Tema | Link |
-| --- | --- | --- |
+| :---: | --- | :---: |
 | 03/04/23 20hrs BR | Introdução à ML + Definição do problema | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=94801bcb-c6ff-48d2-9b66-a818a5fa0571) |
 | 04/04/23 20hrs BR | Brainstorm de variáveis + Criação Feature Store Pt. 1 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=45919433-bed9-4783-9ab8-3965149115dc) |
 | 05/04/23 20hrs BR | Criação Feature Store Pt. 2 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5de9cb10-518b-4fe6-b128-5556fa492ea8) |
