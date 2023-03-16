@@ -15,6 +15,7 @@ Nosso objetivo será, a priori, criar um modelo de Machine Learning para ajudar 
 ## Índice
 - [Como vamos nos organizar](#como-vamos-nos-organizar)
   - [Cronograma](#cronograma)
+  - [Ementa](#ementa)
   - [Pré requisitos](#pre-requisitos)
 - [Sobre o instrutor](#sobre-o-instrutor)
 
@@ -26,14 +27,40 @@ Passaremos por todas etapas do ciclo analítico, desde ETL das fontes de dados, 
 
 ### Cronograma
 
-| Data/Hora | Tema | Link |
-| :---: | --- | :---: |
-| 03/04/23 20hrs BR | Introdução à ML + Definição do problema | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=94801bcb-c6ff-48d2-9b66-a818a5fa0571) |
-| 04/04/23 20hrs BR | Brainstorm de variáveis + Criação Feature Store Pt. 1 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=45919433-bed9-4783-9ab8-3965149115dc) |
-| 05/04/23 20hrs BR | Criação Feature Store Pt. 2 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5de9cb10-518b-4fe6-b128-5556fa492ea8) |
-| 06/04/23 20hrs BR | Criação da ABT | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=24099f20-c017-4f79-a598-2a4b4aca460e) |
-| 07/04/23 20hrs BR | Treinando algoritmos com MLflow | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=48343bdd-6abf-4c66-a452-d6c3702f8e91) |
-| 10/04/23 20hrs BR | Escolhendo melhor algoritmo + Deploy | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5a083e57-cbaf-4117-83e4-77b294f9d8ff) |
+| Dia | Data/Hora | Tema | Link |
+| :---: | :---: | --- | :---: |
+| 1 | 03/04/23 20hrs BR | Introdução à ML + Definição do problema | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=94801bcb-c6ff-48d2-9b66-a818a5fa0571) |
+| 2 | 04/04/23 20hrs BR | Brainstorm de variáveis + Criação Feature Store Pt. 1 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=45919433-bed9-4783-9ab8-3965149115dc) |
+| 3 | 05/04/23 20hrs BR | Criação Feature Store Pt. 2 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5de9cb10-518b-4fe6-b128-5556fa492ea8) |
+| 4 | 06/04/23 20hrs BR | Criação da ABT | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=24099f20-c017-4f79-a598-2a4b4aca460e) |
+| 5 | 07/04/23 20hrs BR | Treinando algoritmos com MLflow | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=48343bdd-6abf-4c66-a452-d6c3702f8e91) |
+| 6 | 10/04/23 20hrs BR | Escolhendo melhor algoritmo + Deploy | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5a083e57-cbaf-4117-83e4-77b294f9d8ff) |
+
+### Ementa
+
+#### Dia 1 - Introdução à ML + Definição do problema
+
+No primeiro dia de curso, conheceremos o ciclo básico de desenvolvimento de um modelo (aplicação) de Machine Learning. Além disso, juntos, de forma colaborativa, definiremos qual será o problema de negócio que gostaríamos de resolver utilizando técnicas preditivas.
+
+#### Dia 2 - Brainstorm de variáveis + Criação Feature Store Pt. 1
+
+Com o problema bem definido, podemos discutir quais são as variáveis (características, atributos, etc) que ajudarão a prever o evento de interesse. isto é, qual conjunto de informações podemos criar para ajudar na solução de nosso problema. Ainda neste momento, as primeiras variáveis serão criadas em suas tabelas de `Feature Stores`.
+
+#### Dia 3 - Criação Feature Store Pt. 2
+
+Continuação da criação das variáveis relevantes para nosso estudo. É importante que ao final deste dia, todas as variáveis estejam devidamente construídas e disponíveis para consulta.
+
+#### Dia 4 - Criação da ABT
+
+Com todas as nossas variáveis criadas e disponíveis, temos condições de processar a nossa tabela definitiva para treinamento de uma algoritmo de Machine Learning. O nome desta tabela é `ABT - *Analytical Base Table*`, onde possui todas informações necessária para solução de nosso problema de negócios, i.e. features (variáveis, características, etc.) e target (variáveis resposta, alvo).
+
+#### Dia 5 - Treinando algoritmos com MLflow
+
+Chegou o momento de treinar nossos primeiros algoritmos de Machine Learning. Utilizaremos a biblioteca MLFlow para realizar a gestão do ciclo de vida de nossos modelos. Desta forma, conseguimos identificar a performance, métricas, parâmetros e variáveis de cada modelo, facilitando assim a tomada de decisão do modelo campeão.
+
+#### Dia 6 - Escolhendo melhor algoritmo + Deploy
+
+Ao definirmos o modelo campeão, podemos realizar novas predições e criar um novos script para fazer este processo de forma automática. Isto é, usar o nosso modelo para ajudar o negócio com novas possibilidades.
 
 ### Pre requisitos
 
@@ -41,8 +68,8 @@ Utilizaremos bastante SQL e Python. O nível básico de conhecimento nessas ling
 
 ## Sobre o instrutor
 
-[Téo](https://www.linkedin.com/in/teocalvo/) é bacharel em Estatística pela FCT-UNESP e tem pós graduação em Big Data & Data Science pela UFPR. Hoje, é Sr. Head of Data na Gamers Club, tendo passado por diferentes empresas e indústrias sempre trabalhando com dados e `Data Science` desde 2014. É professor na ASN.Rocks ministrando aulas de SQL, Python e Machine Learning (classificadores e regressores).
+[Téo](https://www.linkedin.com/in/teocalvo/) é bacharel em Estatística pela FCT-UNESP e tem pós graduação em Big Data & Data Science pela UFPR. Hoje, é Sr. Head of Data na Gamers Club, tendo passado por diferentes empresas e indústrias sempre trabalhando com dados e `Data Science` desde 2014.
 
-Além disso, tem sua própria iniciativa de ensino na internet, o canal [Téo Me Why](https://www.twitch.tv/teomewhy/) na Twitch e parcerias com a [LinuxTips](https://www.linuxtips.io/). As lives são abertas à todas pessoas da comunidade.
+No cenário da educação, é criador do canal Téo Me Why na Twitch para divulgação de conteúdo de qualidade na área de dados e tecnologia de forma gratuita. Além disso, é professor na ASN.Rocks ministrando aulas de SQL, Python e Machine Learning (classificadores e regressores). Também é parceiro da [LinuxTips](https://www.linuxtips.io/) na criação de cursos. Recentemente tornou-se membro do Instituto Aaron Swartz como instrutor de tecnologia, onde firmou parceria junto ao seu canal, visando maior impacto social de seu conteúdo.
 
 Nos apoie: [Apoia.se/teomewhy](http://apoia.se/teomewhy)
