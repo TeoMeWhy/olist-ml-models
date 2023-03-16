@@ -27,7 +27,7 @@ Passaremos por todas etapas do ciclo analítico, desde ETL das fontes de dados, 
 
 ## Sobre o instrutor
 
-Téo é bacharel em Estatística pela FCT-UNESP e tem pós graduação em Big Data & Data Science pela UFPR. Hoje, é Sr. Head of Data na Gamers Club, tendo passado por diferentes empresas e indústrias sempre trabalhando com dados e `Data Science` desde 2014. É professor na ASN.Rocks ministrando aulas de SQL, Python e Machine Learning (classificadores e regressores).
+[Téo](https://www.linkedin.com/in/teocalvo/) é bacharel em Estatística pela FCT-UNESP e tem pós graduação em Big Data & Data Science pela UFPR. Hoje, é Sr. Head of Data na Gamers Club, tendo passado por diferentes empresas e indústrias sempre trabalhando com dados e `Data Science` desde 2014. É professor na ASN.Rocks ministrando aulas de SQL, Python e Machine Learning (classificadores e regressores).
 
 Além disso, tem sua própria iniciativa de ensino na internet, o canal [Téo Me Why](https://www.twitch.tv/teomewhy/) na Twitch e parcerias com a [LinuxTips](https://www.linuxtips.io/). As lives são abertas à todas pessoas da comunidade.
 
