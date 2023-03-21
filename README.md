@@ -17,7 +17,7 @@ Nosso objetivo será, a priori, criar um modelo de Machine Learning para ajudar 
   - [Cronograma](#cronograma)
   - [Ementa](#ementa)
   - [Pré requisitos](#pre-requisitos)
-- [Sober o Instituto Aaron Swartz](Sobre-o-instituto-aaron-swartz)
+- [Sober o Instituto Aaron Swartz](#sobre-o-instituto-aaron-swartz)
 - [Sobre o instrutor](#sobre-o-instrutor)
 
 ## Como vamos nos organizar?
