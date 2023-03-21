@@ -17,6 +17,7 @@ Nosso objetivo será, a priori, criar um modelo de Machine Learning para ajudar 
   - [Cronograma](#cronograma)
   - [Ementa](#ementa)
   - [Pré requisitos](#pre-requisitos)
+- [Sober o Instituto Aaron Swartz](Sobre-o-instituto-aaron-swartz)
 - [Sobre o instrutor](#sobre-o-instrutor)
 
 ## Como vamos nos organizar?
@@ -65,6 +66,20 @@ Ao definirmos o modelo campeão, podemos realizar novas predições e criar um n
 ### Pre requisitos
 
 Utilizaremos bastante SQL e Python. O nível básico de conhecimento nessas linguagens deve ser suficiente para acompanhar o curso. Durante as lives faremos questão de explicar a lógica do desenvolvimento e algumas sintaxes mais avançadas.
+
+## Sobre o Instituto Aaron Swartz
+
+Fazemos parte de um esforço global em que nossa estratégia de impacto social está diretamente alinhada com os Objetivos do Desenvolvimento Sustentável da ONU, contribuindo para o desenvolvimento sustentável reduzindo o gap gênero em TICs, fornecendo acesso à formação e tecnologias à pessoas de baixa renda e potencializando o trabalho coletivo em comunidades periféricas promovendo a cidadania ativa.
+
+Dentre nossos objetivos, temos:
+- Promover oportunidades de aprendizado sobre programação e o acesso à tecnologia e à informação;
+- Elaborar, criar, implantar, executar projetos e programas voltados para educação, cultura do conhecimento e qualificação profissional;
+- Fomentar o desenvolvimento de uma comunidade de interessados em inovação, ciência, cultura, tecnologia, criatividade, artes e disseminação do conhecimento;
+- Promover e dar apoio ao uso de tecnologias e padrões que permitam seu livre uso, estudo, adaptação e compartilhamento, respeitando a autonomia individual e coletiva e incentivando a colaboração;
+- Promover os ideais da ética hacker perante a comunidade e o poder público, esclarecendo desentendimentos acerca do termo;
+- Promover o incentivo ao uso de tecnologia e inovação para a igualdade de gênero – ou seja, aumentar o uso de tecnologias de base, em particular as tecnologias de informação e comunicação, para promover o empoderamento das mulheres e segurança;
+
+Conheça mais em: [institutoasw.org](https://institutoasw.org/)
 
 ## Sobre o instrutor
 
