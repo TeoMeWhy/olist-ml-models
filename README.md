@@ -1,4 +1,7 @@
 # olist-ml-models
+
+<img src="https://github.com/TeoMeWhy/olist-ml-models/blob/main/img/photo_2023-03-19_21-01-54.jpg?raw=true" width=450>
+
 Projeto de Machine Learning do início ao fim no contexto de um e-commerce.
 
 Este projeto é resultado de uma parceria entre o canal [Téo Me Why](https://www.twitch.tv/teomewhy) e o [Instituto Aaron Swartz](https://institutoasw.org/).
