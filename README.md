@@ -3,6 +3,8 @@ Projeto de Machine Learning do início ao fim no contexto de um e-commerce.
 
 Este projeto é resultado de uma parceria entre o canal [Téo Me Why](https://www.twitch.tv/teomewhy) e o [Instituto Aaron Swartz](https://institutoasw.org/).
 
+Se inscreva [aqui](https://forms.gle/bXEdjsjYWt3K9euC7) para receber o certificado de partipação: [Formulário Docs](https://forms.gle/bXEdjsjYWt3K9euC7)
+
 ## +12 horas de conteúdo gratuito sobre Machine Learning
 
 Nosso objetivo será, a priori, criar um modelo de Machine Learning para ajudar o negócio da empresa Olist. Dentre as possibilidades temos:
