@@ -1,0 +1,5 @@
+# vscode files
+.vscode
+
+# database files
+*.db
