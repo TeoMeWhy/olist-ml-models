@@ -1,0 +1,9 @@
+tables:
+  - pagamento_pedido
+  - pedido
+  - produto
+  - cliente
+  - geolocalizacao
+  - item_pedido
+  - avaliacao_do_pedido
+  - vendedor
