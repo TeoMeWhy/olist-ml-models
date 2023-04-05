@@ -1,18 +1,4 @@
 -- Databricks notebook source
-SELECT 
-       DISTINCT
-       T1.idPedido
-      ,T2.idVendedor
-
-
-FROM silver.olist.pedido AS T1
-
-LEFT JOIN silver.olist.item_pedido  AS T2 ON T1.idPedido = T2.idPedido
-
-WHERE T1.dtPedido < '2018-01-01' AND T1.dtPedido >= add_months('2018-01-01', -6)   AND   T2.idVendedor IS NOT NULL
-
--- COMMAND ----------
-
 WITH tb_pedidos AS (
 
   SELECT 
