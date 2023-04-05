@@ -1,24 +1,36 @@
 -- Databricks notebook source
--- PEDIDOS COM DATA DE 01 JAN 2018 ATÉ 6 MESES PARA TRÁS
-WITH tb_join AS (
+-- Databricks notebook source
+WITH tb_pedidos AS (
 
-  SELECT t2.*,
-         t3.idVendedor
+  SELECT 
+      DISTINCT 
+      t1.idPedido,
+      t2.idVendedor
 
   FROM silver.olist.pedido AS t1
+
+  LEFT JOIN silver.olist.item_pedido as t2
+  ON t1.idPedido = t2.idPedido
+
+  WHERE t1.dtPedido < '2018-01-01'
+  AND t1.dtPedido >= add_months('2018-01-01', -6)
+  AND idVendedor IS NOT NULL
+
+),
+
+tb_join AS (
+
+  SELECT 
+        t1.idVendedor,
+        t2.*         
+
+  FROM tb_pedidos AS t1
 
   LEFT JOIN silver.olist.pagamento_pedido AS t2
   ON t1.idPedido = t2.idPedido
 
-  LEFT JOIN silver.olist.item_pedido AS t3
-  ON t1.idPedido = t3.idPedido
+),
 
-  WHERE t1.dtPedido < '2018-01-01'
-  AND t1.dtPedido >= add_months('2018-01-01', -6)
-  AND t3.idVendedor IS NOT NULL
-), 
-
--- AGRUPAR TIPO DE PAGAMENTO POR VENDEDOR E FAZER CONTAGEM/SOMA
 tb_group AS (
 
   SELECT idVendedor,
@@ -30,9 +42,10 @@ tb_group AS (
 
   GROUP BY idVendedor, descTipoPagamento
   ORDER BY idVendedor, descTipoPagamento
-)
 
--- CRIAÇAO DAS COLUNAS COM INFOS DOS MEIOS DE PAGAMENTO
+),
+
+tb_summary AS (
 SELECT 
   idVendedor,
 
@@ -58,4 +71,32 @@ SELECT
 
 FROM tb_group
 
-GROUP BY 1
+GROUP BY idVendedor
+),
+
+tb_cartao AS(
+SELECT 
+  idVendedor,
+  AVG(nrParcelas) AS avgQtdParcelas,
+  PERCENTILE(nrParcelas, 0.5) AS medianQtdParcelas,
+  MAX(nrParcelas) AS maxQtdParcelas,
+  MIN(nrParcelas) AS minQtdParcelas
+  
+FROM tb_join
+
+WHERE descTipoPagamento = 'credit_card'
+
+GROUP BY idVendedor)
+
+SELECT
+  '2018-01-01' as dtReference,
+  t1.*,
+  t2.avgQtdParcelas,
+  t2.medianQtdParcelas,
+  t2.maxQtdParcelas,
+  t2.minQtdParcelas
+  
+FROM tb_summary as t1
+
+LEFT JOIN tb_cartao as t2
+ON t1.idVendedor = t2.idVendedor
