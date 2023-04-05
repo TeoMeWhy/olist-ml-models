@@ -1,64 +1,32 @@
 -- Databricks notebook source
-SELECT date(dtPedido) as dtPedido,
-        count(*) as qtPedido
+WITH tb_pedidos AS (
 
-FROM silver.olist.pedido
-
-GROUP BY 1
-ORDER BY 1
-
--- COMMAND ----------
-
-SELECT *
-FROM silver.olist.pedido 
-
-WHERE dtPedido < '2018-01-01'
-AND dtPedido >= add_months('2018-01-01',-6)
-
--- COMMAND ----------
-
--- MAGIC %md 
--- MAGIC ## Pagamentos dos pedidos dos ultimos seis meses
-
--- COMMAND ----------
-
-SELECT t2.*
-
-FROM silver.olist.pedido AS t1
-
-LEFT JOIN silver.olist.pagamento_pedido AS t2
-ON t1.idPedido = t2.idPedido
-
-WHERE t1.dtPedido < '2018-01-01'
-AND t1.dtPedido >= add_months('2018-01-01',-6)
-
--- COMMAND ----------
-
--- MAGIC %md 
--- MAGIC ## Pagamentos dos pedidos dos ultimos seis meses com info do vendedor
-
--- COMMAND ----------
-
-SELECT * FROM silver.olist.item_pedido AS t1
-
--- COMMAND ----------
-
-WITH tb_join AS (
-
-  SELECT t2.*,
-         t3.idVendedor
+  SELECT 
+      DISTINCT 
+      t1.idPedido,
+      t2.idVendedor
 
   FROM silver.olist.pedido AS t1
 
-  LEFT JOIN silver.olist.pagamento_pedido AS t2
+  LEFT JOIN silver.olist.item_pedido as t2
   ON t1.idPedido = t2.idPedido
-
-  LEFT JOIN silver.olist.item_pedido AS t3
-  ON t1.idPedido = t3.idPedido
 
   WHERE t1.dtPedido < '2018-01-01'
   AND t1.dtPedido >= add_months('2018-01-01', -6)
-  AND t3.idVendedor IS NOT NULL
+  AND idVendedor IS NOT NULL
+
+),
+
+tb_join AS (
+
+  SELECT 
+        t1.idVendedor,
+        t2.*         
+
+  FROM tb_pedidos AS t1
+
+  LEFT JOIN silver.olist.pagamento_pedido AS t2
+  ON t1.idPedido = t2.idPedido
 
 ),
 
@@ -101,4 +69,8 @@ SELECT
 
 FROM tb_group
 
-GROUP BY 1
+GROUP BY idVendedor
+
+-- COMMAND ----------
+
+
