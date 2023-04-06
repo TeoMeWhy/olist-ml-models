@@ -248,7 +248,7 @@ FROM tb_group
 GROUP BY idVendedor
 ),
 
-tb_cartao as (
+tb_cartao AS (
 
   SELECT idVendedor,
   AVG(nrParcelas) AS avgQtdeParcelas,
@@ -267,6 +267,7 @@ t2.avgQtdeParcelas,
 t2.medianQtdeParcelas,
 t2.maxQtdeParcelas,
 t2.minQtdeParcelas
-FROM tb_summary as t1
-LEFT JOIN tb_cartao as t2
+FROM tb_summary AS t1
+LEFT JOIN tb_cartao AS t2
 ON t1.idVendedor = t2.idVendedor
+
