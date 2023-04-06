@@ -67,12 +67,3 @@ SELECT
     *
 
 FROM tb_group
-
--- COMMAND ----------
-
-1dhqibdiaws qieqwieh qoqwhoqwhe hdoqwhdoqwh
-2
-3
-4
-5
-
