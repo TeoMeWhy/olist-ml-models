@@ -79,44 +79,16 @@ SELECT
   ) AS valor_debit_card_pedido,
 
 -- Proporcao de pedidos de acordo com tipo de pagamento
-  SUM(
-    CASE WHEN descTipoPagamento = 'boleto'
-    THEN qtdePedidoMeioPagamento 
-    ELSE 0 END
-  ) / SUM(qtdePedidoMeioPagamento) AS pct_qtd_boleto_pedido,
-  SUM(
-    CASE WHEN descTipoPagamento = 'credit_card'
-    THEN qtdePedidoMeioPagamento 
-    ELSE 0 END
-  ) / SUM(qtdePedidoMeioPagamento) AS pct_qtd_credit_card_pedido,
-  SUM(
-    CASE WHEN descTipoPagamento = 'voucher'
-    THEN qtdePedidoMeioPagamento 
-    ELSE 0 END
-  ) / SUM(qtdePedidoMeioPagamento) AS pct_qtd_voucher_pedido,
-  SUM(
-    CASE WHEN descTipoPagamento = 'debit_card'
-    THEN qtdePedidoMeioPagamento 
-    ELSE 0 END
-  ) / SUM(qtdePedidoMeioPagamento) AS pct_qtd_debit_card_pedido,
+  qtde_boleto_pedido / SUM(qtdePedidoMeioPagamento) AS pct_qtde_boleto_pedido,
+  qtde_credit_card_pedido / SUM(qtdePedidoMeioPagamento) AS pct_qtde_credit_card_pedido,
+  qtde_voucher_pedido / SUM(qtdePedidoMeioPagamento) AS pct_qtde_voucher_pedido,
+  qtde_debit_card_pedido / SUM(qtdePedidoMeioPagamento) AS pct_qtde_debit_card_pedido,
   
   -- Proporcao de valor pago por tipo de pagamento
-  SUM(
-    CASE WHEN descTipoPagamento = 'boleto'
-    THEN vlPedidoMeioPagamento 
-    ELSE 0 END
-  ) / SUM(vlPedidoMeioPagamento) AS pct_valor_boleto_pedido,
-  SUM(
-    CASE WHEN descTipoPagamento = 'credit_card'
-    THEN vlPedidoMeioPagamento 
-    ELSE 0 END
-  ) / SUM(vlPedidoMeioPagamento) AS pct_valor_credit_card_pedido,
-  SUM(
-    CASE WHEN descTipoPagamento = 'voucher'
-    THEN vlPedidoMeioPagamento 
-    ELSE 0 END
-  ) / SUM(vlPedidoMeioPagamento) AS pct_valor_voucher_pedido,
-  SUM(
+  valor_boleto_pedido / SUM(vlPedidoMeioPagamento) AS pct_valor_boleto_pedido,
+  valor_credit_card_pedido / SUM(vlPedidoMeioPagamento) AS pct_valor_credit_card_pedido,
+  valor_voucher_pedido / SUM(vlPedidoMeioPagamento) AS pct_valor_voucher_pedido,
+  valor_debit_card_pedidoSUM(
     CASE WHEN descTipoPagamento = 'debit_card'
     THEN vlPedidoMeioPagamento 
     ELSE 0 END
@@ -124,6 +96,3 @@ SELECT
 
 FROM tb_group
 GROUP BY 1
-
--- SELECT * FROM tb_group
-
