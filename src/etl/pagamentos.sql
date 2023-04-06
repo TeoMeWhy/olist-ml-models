@@ -1,24 +1,4 @@
 -- Databricks notebook source
-SELECT *
-FROM silver.olist.pagamentos_pedido
-
--- COMMAND ----------
-
-SELECT date(dtPedido) as dtPedido,
-count(*) as qtPedido
-FROM silver.olist.pedido
-GROUP BY 1
-ORDER BY 1
-
--- COMMAND ----------
-
-SELECT *
-FROM silver.olist.pedido
-WHERE dtPedido < '2018-01-01'
-AND dtPedido >= add_months('2018-01-01',6)
-
--- COMMAND ----------
-
 WITH tb_join AS(
 SELECT t2.*,t3.idVendedor
 FROM silver.olist.pedido as t1
