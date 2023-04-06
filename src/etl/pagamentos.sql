@@ -88,11 +88,7 @@ SELECT
   valor_boleto_pedido / SUM(vlPedidoMeioPagamento) AS pct_valor_boleto_pedido,
   valor_credit_card_pedido / SUM(vlPedidoMeioPagamento) AS pct_valor_credit_card_pedido,
   valor_voucher_pedido / SUM(vlPedidoMeioPagamento) AS pct_valor_voucher_pedido,
-  valor_debit_card_pedidoSUM(
-    CASE WHEN descTipoPagamento = 'debit_card'
-    THEN vlPedidoMeioPagamento 
-    ELSE 0 END
-  ) / SUM(vlPedidoMeioPagamento) AS pct_valor_debit_card_pedido
+  valor_debit_card_pedido / SUM(vlPedidoMeioPagamento) AS pct_valor_debit_card_pedido
 
 FROM tb_group
 GROUP BY 1
