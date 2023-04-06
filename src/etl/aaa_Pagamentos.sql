@@ -10,20 +10,6 @@
 
 -- COMMAND ----------
 
-SELECT DISTINCT
-               t1.idPedido,
-               t2.idVendedor
-               
-FROM silver.olist.pedido as t1
-
-LEFT JOIN silver.olist.item_pedido AS t2
-ON t1.idPedido = t2.idPedido
-
-WHERE t1.dtPedido < '2018-01-01'
-AND t1.dtPedido <= add_months('2018-01-01', -6)
-
--- COMMAND ----------
-
 WITH tb_pedidos AS (
 
   SELECT 
