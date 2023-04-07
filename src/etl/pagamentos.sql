@@ -1,16 +1,3 @@
--- Databricks notebook source
-
-SELECT date(dtPedido) as dtPedido,
-  count(*) as qtPedido
-  
-FROM silver.olist.pedido
-
-GROUP BY 1 
-ORDER BY 1
-
-
--- COMMAND ----------
-
 WITH tb_pedidos AS (
 
   SELECT 
