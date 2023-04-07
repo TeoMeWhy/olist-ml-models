@@ -23,7 +23,6 @@ tb_join AS (
 
   LEFT JOIN silver.olist.pagamento_pedido AS t2
   ON t1.idPedido = t2.idPedido
-
 ),
 
 tb_group AS (
@@ -35,8 +34,8 @@ tb_group AS (
   
   FROM tb_join
 
-  GROUP BY tb_join.idVendedor, tb_join.descTipoPagamento
-  ORDER BY tb_join.idVendedor, tb_join.descTipoPagamento
+  GROUP BY idVendedor, descTipoPagamento
+  ORDER BY idVendedor, descTipoPagamento
 ),
 
 tb_summary(
