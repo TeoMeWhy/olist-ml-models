@@ -1,1 +1,1 @@
-SELECT * FROM produto
+SELECT * FROM pagamento_pedido
