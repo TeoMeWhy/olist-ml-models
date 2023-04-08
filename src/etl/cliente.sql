@@ -49,7 +49,6 @@ tb_grouped AS (
   FROM tb_join
   GROUP BY idVendedor
 )
-
 SELECT '2018-01-01' AS dtReference,
         *
 FROM tb_grouped
