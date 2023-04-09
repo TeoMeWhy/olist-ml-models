@@ -54,7 +54,7 @@ group by idVendedor)
 SELECT '2018-01-01' AS dtReference,
        *
 
-FROM tb_summary
+FROM tb_summary tb
 
 -- COMMAND ----------
 
