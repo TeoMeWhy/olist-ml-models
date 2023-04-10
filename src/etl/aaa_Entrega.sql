@@ -46,8 +46,8 @@ SELECT
        COUNT(DISTINCT CASE WHEN descSituacao = 'canceled' THEN idPedido END) / COUNT(DISTINCT idPedido) AS pctPedidosCancelado,
        AVG(totalFrete) as avgFrete,
        PERCENTILE(totalFrete, 0.5) AS medianFrete,
-       max(totalFrete) as maxFrete,
-       min(totalFrete) as minFrete,
+       MAX(totalFrete) as maxFrete,
+       MIN(totalFrete) as minFrete,
        AVG(DATEDIFF(coalesce(dtEntregue, '2018-01-01'), dtAprovado)) AS qtdDiasAprovadoEntrega,
        AVG(DATEDIFF(coalesce(dtEntregue, '2018-01-01'), dtPedido)) AS qtdDiasPedidoEntrega,
        AVG(DATEDIFF(dtEstimativaEntrega, coalesce(dtEntregue, '2018-01-01'))) AS qtdDiasEntregaPromessa
