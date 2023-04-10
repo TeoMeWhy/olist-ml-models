@@ -23,7 +23,7 @@ SELECT t1.idPedido,
 
 FROM silver.olist.pedido t1
 
-JOIN silver.olist.item_pedido t2
+LEFT JOIN silver.olist.item_pedido t2
 ON t1.idPedido = t2.idPedido
 
 WHERE dtPedido < '2018-01-01'
