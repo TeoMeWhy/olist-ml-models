@@ -47,3 +47,7 @@ tb_summary AS (
 SELECT '2018-01-01' AS dtReference,
        *
 FROM tb_summary
+
+-- COMMAND ----------
+
+
