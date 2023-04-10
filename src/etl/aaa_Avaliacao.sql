@@ -4,7 +4,7 @@
 -- MAGIC - Avaliação média em NPS
 -- MAGIC - Nota média de avaliação
 -- MAGIC - Quantidade de avaliações
--- MAGIC - Quantidade de avaliações negativas
+-- MAGIC - Quantidade de avaliações negativas - não feita
 
 -- COMMAND ----------
 
