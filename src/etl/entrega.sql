@@ -16,6 +16,7 @@ WITH tb_pedido AS (
 
   WHERE dtPedido < '{date}'
   AND dtPedido >= add_months('{date}', -6)
+  AND idVendedor IS NOT NULL
 
   GROUP BY t1.idPedido,
           t2.idVendedor,
