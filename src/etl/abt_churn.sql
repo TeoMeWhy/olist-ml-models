@@ -1,4 +1,7 @@
 -- Databricks notebook source
+DROP TABLE IF EXISTS silver.analytics.abt_olist_churn;
+CREATE TABLE silver.analytics.abt_olist_churn
+
 WITH tb_features AS (
     SELECT 
           t1.dtReference,
@@ -150,13 +153,14 @@ tb_flag AS (
 )
 
 SELECT t1.*,
-       case when dtProxPedido IS NULL THEN 1 ELSE 0 END AS flChurn
+       CASE WHEN dtProxPedido IS NULL THEN 1 ELSE 0 END AS flChurn
 
 FROM tb_features AS t1
 
 LEFT JOIN tb_flag AS t2
-on t1.idVendedor = t2.idVendedor
+ON t1.idVendedor = t2.idVendedor
 AND t1.dtReference = t2.dtReference
 
-ORDER BY t1.idVendedor, t1.dtReference
+WHERE DAY(t1.dtReference) = 1
 
+ORDER BY t1.idVendedor, t1.dtReference;
