@@ -1,12 +1,3 @@
--- Databricks notebook source
--- MAGIC %md # Issues
--- MAGIC - Categorias vendidas
--- MAGIC - Quantidade de itens(SKU) distintos
--- MAGIC - Tamanho do produto (em volume)
--- MAGIC - Média de fotos por produto
-
--- COMMAND ----------
-
 WITH tb_join AS (
   
   SELECT DISTINCT
@@ -19,8 +10,8 @@ WITH tb_join AS (
   
   LEFT JOIN silver.olist.produto t3
   ON t2.idProduto = t3.idProduto
-  WHERE t1.dtPedido < '2018-01-01'
-  AND t1.dtPedido >= add_months ('2018-01-01', -6)
+  WHERE t1.dtPedido < '{date}'
+  AND t1.dtPedido >= add_months ('{date}', -6)
   AND t2.idVendedor IS NOT NULL
 ),
 
@@ -54,24 +45,7 @@ tb_summary AS(
   GROUP BY 1
 )
 
-select '2018-0-01' AS dtReference, *
+SELECT '{date}' AS dtReference,
+       NOW() as dtIngestion, 
+       *
 FROM tb_summary
-
-
-
--- COMMAND ----------
-
--- Query aux
-
-SELECT 
-      descCategoria
-  
-  FROM silver.olist.item_pedido as t2
-  
-  LEFT JOIN silver.olist.produto t3
-  ON t2.idProduto = t3.idProduto
-  AND t2.idVendedor IS NOT NULL
-  group by 1
-  order by count(distinct idPedido) desc
-  limit 15
-

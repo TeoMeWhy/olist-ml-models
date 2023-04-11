@@ -1,10 +1,3 @@
--- Databricks notebook source
--- MAGIC %md # Issues 
--- MAGIC 
--- MAGIC - Regiões para onde vende (percentual)
-
--- COMMAND ----------
-
 -- Cruzar id do pedido com id do cliente
 
 WITH tb_join AS ( -- join para calcular estados de venda
@@ -23,8 +16,8 @@ WITH tb_join AS ( -- join para calcular estados de venda
     LEFT JOIN silver.olist.cliente as t3
     ON t1.idCliente = t3.idCliente
 
-    WHERE dtPedido <  '2018-01-01'
-    AND dtPedido >= add_months('2018-01-01', -6)
+    WHERE dtPedido <  '{date}'
+    AND dtPedido >= add_months('{date}', -6)
     AND idVendedor IS NOT NULL
 
 ),
@@ -76,7 +69,8 @@ tb_group AS
 )
 
 SELECT 
-      '2018-01-01' AS dtReference,
+      '{date}' AS dtReference,
+      NOW() as dfIngestion,
       *
       
 FROM tb_group

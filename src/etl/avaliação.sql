@@ -1,13 +1,3 @@
--- Databricks notebook source
--- MAGIC %md Issue
--- MAGIC 
--- MAGIC - Avaliação média em NPS
--- MAGIC - Nota média de avaliação
--- MAGIC - Quantidade de avaliações
--- MAGIC - Quantidade de avaliações negativas - não feita
-
--- COMMAND ----------
-
 WITH tb_pedido AS (
 
 SELECT DISTINCT 
@@ -19,8 +9,8 @@ LEFT JOIN silver.olist.item_pedido AS t2
 ON t1.idPedido = t2.idPedido
 
 
-WHERE dtPedido < '2018-01-01'
-AND dtPedido >= add_months('2018-01-01', -6)
+WHERE dtPedido < '{date}'
+AND dtPedido >= add_months('{date}', -6)
 AND idVendedor IS NOT NULL),
 
 tb_join AS (
@@ -46,9 +36,9 @@ FROM tb_join
 
 GROUP BY 1)
 
-SELECT '2018-01-01' dtReference,* 
+SELECT '{date}' dtReference,
+        now() as dtIngestion,
+        *
+        
+
 FROM tb_summary
-
--- COMMAND ----------
-
-

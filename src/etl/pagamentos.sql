@@ -1,15 +1,3 @@
--- Databricks notebook source
--- MAGIC %md # Issues
--- MAGIC 
--- MAGIC - % formas de pagamentos (para cada vendedor)
--- MAGIC - Quantidade média de parcelas (quando cartão) (para cada vendedor)
-
--- COMMAND ----------
-
--- MAGIC %md ## % formas de pagamentos (para cada vendedor)
-
--- COMMAND ----------
-
 WITH tb_pedidos AS (
 
   SELECT 
@@ -22,8 +10,8 @@ WITH tb_pedidos AS (
   LEFT JOIN silver.olist.item_pedido as t2
   ON t1.idPedido = t2.idPedido
 
-  WHERE t1.dtPedido < '2018-01-01'
-  AND t1.dtPedido >= add_months('2018-01-01', -6)
+  WHERE t1.dtPedido < '{date}'
+  AND t1.dtPedido >= add_months('{date}', -6)
   AND idVendedor IS NOT NULL
 
 ),
@@ -103,7 +91,8 @@ tb_cartao as (
 )
 
 SELECT 
-       '2018-01-01' AS dtReference,
+       '{date}' AS dtReference,
+       NOW() as dfIngestion,
        t1.*,
        t2.avgQtdeParcelas,
        t2.medianQtdeParcelas,
@@ -114,41 +103,3 @@ FROM tb_summary as t1
 
 LEFT JOIN tb_cartao as t2
 ON t1.idVendedor = t2.idVendedor
-
--- COMMAND ----------
-
--- MAGIC %md ## Quantidade média de parcelas (quando cartão) (para cada vendedor)
-
--- COMMAND ----------
-
-
-WITH tb_join AS (
-
-    SELECT t2.*,
-           t3.idVendedor
-           
-    FROM silver.olist.pedido AS t1
-    
-    LEFT JOIN silver.olist.pagamento_pedido AS t2
-           ON t1.idPedido = t2.idPedido
-    
-    LEFT JOIN silver.olist.item_pedido AS t3
-           ON t1.idPedido = t3.idPedido
-    WHERE t1.dtPedido < '2018-01-01'
-      AND t1.dtPedido >= add_months ('2018-01-01', -6)
-      AND t3.idVendedor IS NOT NULL),
-      
-tb_group2 AS (
-      
-SELECT * 
-FROM tb_join
-WHERE descTipoPagamento = 'credit_card'
-)
-
-select * from tb_group2
-where idVendedor = '1fe61aa5494bd3ae92a2c13e067c810f'
-
--- SELECT idVendedor, 
---        AVG(nrParcelas) AS AvgParcelas
--- FROM tb_group2
--- GROUP BY 1'
