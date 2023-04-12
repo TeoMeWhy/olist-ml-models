@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %pip install tqdm
+#%pip install tqdm
 
 # COMMAND ----------
 
@@ -74,7 +74,7 @@ if not table_exists(database, table_name):
     
 else:
     print("Realizando update")
-    for i in tqdm(dates):
+    for i in dates:
         spark.sql(f"DELETE FROM {database}.{table_name} WHERE dtReference = '{i}'")
         (spark.sql(query.format(date=i))
               .coalesce(1)
