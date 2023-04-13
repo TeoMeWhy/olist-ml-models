@@ -35,14 +35,18 @@ Passaremos por todas etapas do ciclo analítico, desde ETL das fontes de dados, 
 
 | Dia | Data/Hora | Tema | Link |
 | :---: | :---: | --- | :---: |
-| 1 | 03/04/23 20hrs BR | Introdução à ML + Definição do problema | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=94801bcb-c6ff-48d2-9b66-a818a5fa0571) |
-| 2 | 04/04/23 20hrs BR | Brainstorm de variáveis + Criação Feature Store Pt. 1 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=45919433-bed9-4783-9ab8-3965149115dc) |
-| 3 | 05/04/23 20hrs BR | Criação Feature Store Pt. 2 | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5de9cb10-518b-4fe6-b128-5556fa492ea8) |
-| 4 | 06/04/23 20hrs BR | Criação da ABT | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=24099f20-c017-4f79-a598-2a4b4aca460e) |
-| 5 | 07/04/23 20hrs BR | Treinando algoritmos com MLflow | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=48343bdd-6abf-4c66-a452-d6c3702f8e91) |
-| 6 | 10/04/23 20hrs BR | Escolhendo melhor algoritmo + Deploy | [:link:](https://www.twitch.tv/teomewhy/schedule?segmentID=5a083e57-cbaf-4117-83e4-77b294f9d8ff) |
+| 1 | 03/04/23 20hrs BR | Introdução à ML + Definição do problema | [:link:](https://www.twitch.tv/videos/1784362772) |
+| 2 | 04/04/23 20hrs BR | Brainstorm de variáveis + Criação Feature Store Pt. 1 | [:link:](https://www.twitch.tv/videos/1784988522) |
+| 3 | 05/04/23 20hrs BR | Criação Feature Store Pt. 2 | [:link:](https://www.twitch.tv/videos/1785891887) |
+| 4 | 06/04/23 20hrs BR | Criação das Safras | [:link:](https://www.twitch.tv/videos/1787450542) |
+| 5 | 07/04/23 20hrs BR | Criação da ABT | [:link:](https://www.twitch.tv/videos/1789854320) |
+| 6 | 10/04/23 20hrs BR | Teoria dos Algoritmos (Árvore e Regressão Linear e Logística) | [:link:](https://www.twitch.tv/videos/1790448831) |
+| 7 | 11/04/23 20hrs BR | Métricas de ajuste | [:link:](https://www.twitch.tv/videos/1792052442) |
+| 8 | 12/04/23 20hrs BR | Deploy com MLFlow | [:link:](https://www.twitch.tv/videos/1792476782) |
 
 ### Ementa
+
+Todo material de apresentação está [disponível aqui](https://docs.google.com/presentation/d/1-1KM4gamVv7TBJ6DP6ZYOZRBmk1MfNUkIngBGc2JDBA/edit?usp=sharing).
 
 #### Dia 1 - Introdução à ML + Definição do problema
 
