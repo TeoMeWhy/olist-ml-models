@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %pip install feature-engine scikit-plot mlflow
+# MAGIC %pip install feature-engine scikit-plot lightgbm
 
 # COMMAND ----------
 
@@ -10,6 +10,8 @@ from sklearn import metrics
 from sklearn import ensemble
 
 import scikitplot as skplt
+
+import lightgbm
 
 import mlflow
 
@@ -88,6 +90,7 @@ mlflow.set_experiment("/Users/teomewhy@gmail.com/olist-churn-teo")
 with mlflow.start_run():
 
     mlflow.sklearn.autolog()
+    mlflow.lightgbm.autolog()
     mlflow.autolog()
     
     imputer_minus_100 = imputation.ArbitraryNumberImputer(arbitrary_number=-100,
@@ -97,18 +100,24 @@ with mlflow.start_run():
                                                   variables=missing_0)
 
     # este é um modelo de árvore de decisão
-    model = ensemble.RandomForestClassifier(n_jobs=-1,
-                                            random_state=42)
+    model = lightgbm.LGBMClassifier(n_jobs=-1,
+                                    learning_rate=0.1,
+                                    min_child_samples=30,
+                                    max_depth=10,
+                                    n_estimators=400)
 
-    params = {"min_samples_leaf": [5,10,20],
-              "n_estimators":[300,400,450, 500]}
+    #params = {"learning_rate": [0.1, 0.5, 0.7, 0.9, 0.99999],
+    #          "n_estimators":[300,400,450, 500],
+    #          "min_child_samples": [20,30,40,50,100]             
+    #         }
     
-    grid = model_selection.GridSearchCV(model, params, cv=3, verbose=3, scoring='roc_auc')
+    #grid = model_selection.GridSearchCV(model, params, cv=3, verbose=3, scoring='roc_auc')
     
     # Criando o pipeline
     model_pipeline = pipeline.Pipeline([("Imputer -100", imputer_minus_100),
                                         ("Imputer 0", imputer_0),
-                                        ("Grid Search", grid),
+                                        #("Grid Search", grid),
+                                        ("LGBM Model", model),
                                         ])  
    
     model_pipeline.fit(X_train, y_train)
@@ -125,59 +134,4 @@ with mlflow.start_run():
 
 # COMMAND ----------
 
-pd.DataFrame(grid.cv_results_).sort_values(by='rank_test_score')
 
-# COMMAND ----------
-
-grid.best_estimator_
-
-# COMMAND ----------
-
-skplt.metrics.plot_roc(y_train, probas)
-
-# COMMAND ----------
-
-skplt.metrics.plot_ks_statistic(y_train, probas)
-
-# COMMAND ----------
-
-skplt.metrics.plot_lift_curve(y_train, probas)
-
-# COMMAND ----------
-
-df_teo = pd.DataFrame()
-df_teo['target'] = y_train
-df_teo['proba'] = probas[:,1]
-df_teo = df_teo.sort_values(by='proba')
-df_teo.tail(100)['target'].mean() / df_teo['target'].mean()
-
-# COMMAND ----------
-
-probas_test = model_pipeline.predict_proba(X_test)
-
-# COMMAND ----------
-
-skplt.metrics.plot_roc(y_test, probas_test)
-
-# COMMAND ----------
-
-skplt.metrics.plot_ks_statistic(y_test, probas_test)
-
-# COMMAND ----------
-
-probas_oot = model_pipeline.predict_proba(df_oot[features])
-
-# COMMAND ----------
-
-skplt.metrics.plot_roc(df_oot[target], probas_oot)
-
-# COMMAND ----------
-
-skplt.metrics.plot_ks_statistic(df_oot[target], probas_oot)
-
-# COMMAND ----------
-
-fs_importance = model_pipeline[-1].feature_importances_
-fs_cols = model_pipeline[:-1].transform(X_train.head(1)).columns.tolist()
-
-pd.Series(fs_importance, index=fs_cols).sort_values(ascending=False)
