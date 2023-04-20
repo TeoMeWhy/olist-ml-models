@@ -53,7 +53,7 @@ python ingestao_feature_store.py --table fs_vendedor_entrega --dt_start "2017-01
 
 O comando acima. criará a tabela `fs_vendedor_entrega` no banco de dados, com as safras mensais de `2017-01-01` a `2018-02-01`.
 
-# Criação da ABT
+## Criação da ABT
 
 Para criarmos nossa base de treinamento do algoritmo, podemos rodar o ETL que constrói a ABT de churn, isto é, variável resposta + features.
 
