@@ -133,7 +133,7 @@ WITH tb_features AS (
 
 tb_event AS (
   SELECT distinct idVendedor,
-         julianday(dtPedido) as dtPedido
+         date(dtPedido) as dtPedido
 
   FROM item_pedido AS t1
 
