@@ -1,7 +1,7 @@
 -- Databricks notebook source
 -- Databricks notebook source
-DROP TABLE IF EXISTS silver.analytics.abt_olist_churn;
-CREATE TABLE silver.analytics.abt_olist_churn
+-- DROP TABLE IF EXISTS silver.analytics.abt_olist_churn;
+-- CREATE TABLE silver.analytics.abt_olist_churn
 
 WITH tb_features AS (
     SELECT 
