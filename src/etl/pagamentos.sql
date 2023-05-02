@@ -10,8 +10,8 @@ WITH tb_pedidos AS (
   LEFT JOIN item_pedido as t2
   ON t1.idPedido = t2.idPedido
 
-  WHERE t1.dtPedido < '{date}'
-  AND t1.dtPedido >= DATE('{date}', '-6 months')
+  WHERE t1.dtPedido < '2018-01-01'
+  AND t1.dtPedido >= DATE('2018-01-01', '-6 months')
   AND idVendedor IS NOT NULL
 
 ),
@@ -91,7 +91,7 @@ tb_cartao as (
 )
 
 SELECT 
-       '{date}' AS dtReference,
+       '2018-01-01' AS dtReference,
        DATE('now') AS dtIngestion,
        t1.*,
        t2.avgQtdeParcelas,
