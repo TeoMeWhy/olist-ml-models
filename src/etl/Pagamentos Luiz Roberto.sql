@@ -1,4 +1,16 @@
 -- Databricks notebook source
+  SELECT *
+
+  FROM silver.olist.pedido AS t1
+
+-- COMMAND ----------
+
+  SELECT *
+
+  FROM silver.olist.item_pedido AS t1
+
+-- COMMAND ----------
+
 WITH tb_pedidos AS (
 
   SELECT 
@@ -32,15 +44,19 @@ tb_join AS (
 
 tb_group AS (
 
-  SELECT idVendedor,
-         descTipoPagamento,
-         count(distinct idPedido) as qtdePedidoMeioPagamento,
-         sum(vlPagamento) as vlPedidoMeioPagamento
-
-  FROM tb_join
-
-  GROUP BY idVendedor, descTipoPagamento
-  ORDER BY idVendedor, descTipoPagamento
+  SELECT 
+    idVendedor,
+    descTipoPagamento,
+    count(distinct idPedido) as QtyPedidos,
+    sum(vlPagamento) as VolumePedido
+  FROM 
+    tb_join
+  GROUP BY 
+    idVendedor, 
+    descTipoPagamento
+  ORDER BY 
+    idVendedor, 
+    descTipoPagamento
 
 )
 
@@ -48,26 +64,26 @@ tb_group AS (
   SELECT 
     idVendedor,
 
-    sum(case when descTipoPagamento='boleto' then qtdePedidoMeioPagamento else 0 end) as qtde_boleto_pedido,
-    sum(case when descTipoPagamento='credit_card' then qtdePedidoMeioPagamento else 0 end) as qtde_credit_card_pedido,
-    sum(case when descTipoPagamento='voucher' then qtdePedidoMeioPagamento else 0 end) as qtde_voucher_pedido,
-    sum(case when descTipoPagamento='debit_card' then qtdePedidoMeioPagamento else 0 end) as qtde_debit_card_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'boleto' THEN QtyPedidos ELSE 0 END) AS qtde_boleto_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'credit_card' THEN QtyPedidos ELSE 0 END) AS qtde_credit_card_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'voucher' THEN QtyPedidos ELSE 0 END) AS qtde_voucher_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'debit_card' THEN QtyPedidos ELSE 0 END) AS qtde_debit_card_pedido,
 
-    sum(case when descTipoPagamento='boleto' then vlPedidoMeioPagamento else 0 end) as valor_boleto_pedido,
-    sum(case when descTipoPagamento='credit_card' then vlPedidoMeioPagamento else 0 end) as valor_credit_card_pedido,
-    sum(case when descTipoPagamento='voucher' then vlPedidoMeioPagamento else 0 end) as valor_voucher_pedido,
-    sum(case when descTipoPagamento='debit_card' then vlPedidoMeioPagamento else 0 end) as valor_debit_card_pedido,
-
-    sum(case when descTipoPagamento='boleto' then qtdePedidoMeioPagamento else 0 end) / sum(qtdePedidoMeioPagamento) as pct_qtd_boleto_pedido,
-    sum(case when descTipoPagamento='credit_card' then qtdePedidoMeioPagamento else 0 end) / sum(qtdePedidoMeioPagamento) as pct_qtd_credit_card_pedido,
-    sum(case when descTipoPagamento='voucher' then qtdePedidoMeioPagamento else 0 end) / sum(qtdePedidoMeioPagamento) as pct_qtd_voucher_pedido,
-    sum(case when descTipoPagamento='debit_card' then qtdePedidoMeioPagamento else 0 end) / sum(qtdePedidoMeioPagamento) as pct_qtd_debit_card_pedido,
-
-    sum(case when descTipoPagamento='boleto' then vlPedidoMeioPagamento else 0 end) / sum(vlPedidoMeioPagamento) as pct_valor_boleto_pedido,
-    sum(case when descTipoPagamento='credit_card' then vlPedidoMeioPagamento else 0 end) / sum(vlPedidoMeioPagamento) as pct_valor_credit_card_pedido,
-    sum(case when descTipoPagamento='voucher' then vlPedidoMeioPagamento else 0 end) / sum(vlPedidoMeioPagamento) as pct_valor_voucher_pedido,
-    sum(case when descTipoPagamento='debit_card' then vlPedidoMeioPagamento else 0 end) / sum(vlPedidoMeioPagamento) as pct_valor_debit_card_pedido
-
+    SUM(CASE WHEN descTipoPagamento = 'boleto' THEN QtyPedidos ELSE 0 END) / SUM(QtyPedidos) AS pct_qtd_boleto_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'credit_card' THEN QtyPedidos ELSE 0 END) / SUM(QtyPedidos) AS pct_qtd_credit_card_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'voucher' THEN QtyPedidos ELSE 0 END) / SUM(QtyPedidos) AS pct_qtd_voucher_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'debit_card' THEN QtyPedidos ELSE 0 END) / SUM(QtyPedidos) AS pct_qtd_debit_card_pedido,
+ 
+    SUM(CASE WHEN descTipoPagamento = 'boleto' THEN VolumePedido ELSE 0 END) AS valor_boleto_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'credit_card' THEN VolumePedido ELSE 0 END) AS valor_credit_card_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'voucher' THEN VolumePedido ELSE 0 END) AS valor_voucher_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'debit_card' THEN VolumePedido ELSE 0 END) AS valor_debit_card_pedido,
+  
+    SUM(CASE WHEN descTipoPagamento = 'boleto' THEN VolumePedido ELSE 0 END) / SUM(VolumePedido) AS pct_valor_boleto_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'credit_card' THEN VolumePedido ELSE 0 END) / SUM(VolumePedido) AS pct_valor_credit_card_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'voucher' THEN VolumePedido ELSE 0 END) / SUM(VolumePedido) AS pct_valor_voucher_pedido,
+    SUM(CASE WHEN descTipoPagamento = 'debit_card' THEN VolumePedido ELSE 0 END) / SUM(VolumePedido) AS pct_valor_debit_card_pedido
+ 
   FROM tb_group
 
   GROUP BY idVendedor 
