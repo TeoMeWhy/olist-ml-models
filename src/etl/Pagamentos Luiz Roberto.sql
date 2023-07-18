@@ -13,32 +13,33 @@
 
 WITH tb_pedidos AS (
 
-  SELECT 
-      DISTINCT 
-      t1.idPedido,
-      t2.idVendedor
-
-  FROM silver.olist.pedido AS t1
-
-  LEFT JOIN silver.olist.item_pedido as t2
-  ON t1.idPedido = t2.idPedido
-
-  WHERE t1.dtPedido < '2018-01-01'
-  AND t1.dtPedido >= add_months('2018-01-01', -6)
-  AND idVendedor IS NOT NULL
+  SELECT DISTINCT 
+    t1.idPedido,
+    t2.idVendedor
+  FROM 
+    silver.olist.pedido AS t1
+  LEFT JOIN 
+    silver.olist.item_pedido as t2
+      ON t1.idPedido = t2.idPedido
+  WHERE 
+    t1.dtPedido < '2018-01-01'
+  AND 
+    t1.dtPedido >= add_months('2018-01-01', -6)
+  AND 
+    idVendedor IS NOT NULL
 
 ),
 
 tb_join AS (
 
   SELECT 
-        t1.idVendedor,
-        t2.*         
-
-  FROM tb_pedidos AS t1
-
-  LEFT JOIN silver.olist.pagamento_pedido AS t2
-  ON t1.idPedido = t2.idPedido
+    t1.idVendedor,
+    t2.*         
+  FROM 
+    tb_pedidos AS t1
+  LEFT JOIN 
+    silver.olist.pagamento_pedido AS t2
+      ON t1.idPedido = t2.idPedido
 
 ),
 
@@ -47,8 +48,8 @@ tb_group AS (
   SELECT 
     idVendedor,
     descTipoPagamento,
-    count(distinct idPedido) as QtyPedidos,
-    sum(vlPagamento) as VolumePedido
+    COUNT(distinct idPedido) as QtyPedidos,
+    SUM(vlPagamento) as VolumePedido
   FROM 
     tb_join
   GROUP BY 
