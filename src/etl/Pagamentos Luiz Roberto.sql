@@ -24,13 +24,13 @@ WITH tb_pedidos AS (
   WHERE 
     t1.dtPedido < '2018-01-01'
   AND 
-    t1.dtPedido >= add_months('2018-01-01', -6)
+    t1.dtPedido >= ADD_MONTHS('2018-01-01', -6)
   AND 
     idVendedor IS NOT NULL
 
 ),
 
-tb_join AS (
+tb_pedidos_pagamentos AS (
 
   SELECT 
     t1.idVendedor,
@@ -51,7 +51,7 @@ tb_group AS (
     COUNT(distinct idPedido) as QtyPedidos,
     SUM(vlPagamento) as VolumePedido
   FROM 
-    tb_join
+    tb_pedidos_pagamentos
   GROUP BY 
     idVendedor, 
     descTipoPagamento
@@ -59,9 +59,9 @@ tb_group AS (
     idVendedor, 
     descTipoPagamento
 
-)
+), 
 
-
+tb_summary AS (
   SELECT 
     idVendedor,
 
@@ -87,4 +87,27 @@ tb_group AS (
  
   FROM tb_group
 
-  GROUP BY idVendedor 
+  GROUP BY idVendedor), 
+
+tb_card AS (
+  SELECT 
+    idVendedor, 
+    AVG(nrParcelas) AS AvgParcelas, 
+    MAX(nrParcelas) AS MaxParcelas,
+    MIN(nrParcelas) AS MinParcelas, 
+    PERCENTILE(nrParcelas, 0.5) AS MedParcelas 
+  FROM 
+    tb_pedidos_pagamentos
+  WHERE 
+    descTipoPagamento = 'credit_card'
+  GROUP BY
+   idVendedor 
+) 
+
+SELECT '2018-01-01' AS dTRefe, t1.*, t2.* EXCEPT(t2.idVendedor) 
+FROM tb_summary t1 
+LEFT JOIN tb_card t2 
+ON t1.idVendedor = t2.idVendedor
+
+
+
