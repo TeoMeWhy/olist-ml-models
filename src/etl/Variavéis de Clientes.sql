@@ -37,6 +37,8 @@ GROUP BY
 SELECT 
   '2018-01-01' AS dTRefe, 
   IdVendedor, 
+  COUNT(DISTINCT descUF) AS QtyDistinctUFsPedidos, 
+  SUM(TotalPedidos) AS TotalPedidos, 
   SUM(CASE WHEN descUF = 'SC' THEN TotalPedidos ELSE 0 END) / SUM(TotalPedidos) AS TotalPedidos_SC,
   SUM(CASE WHEN descUF = 'RO' THEN TotalPedidos ELSE 0 END) / SUM(TotalPedidos) AS TotalPedidos_RO,
   SUM(CASE WHEN descUF = 'PI' THEN TotalPedidos ELSE 0 END) / SUM(TotalPedidos) AS TotalPedidos_PI,
