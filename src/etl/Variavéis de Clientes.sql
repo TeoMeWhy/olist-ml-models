@@ -69,7 +69,7 @@ SELECT
 FROM 
   tbl_pedidos_clients
 GROUP BY 
-  IdVendedor
+  IdVendedor; 
 
 -- COMMAND ----------
 
