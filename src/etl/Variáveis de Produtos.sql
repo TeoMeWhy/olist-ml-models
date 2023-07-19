@@ -1,4 +1,8 @@
 -- Databricks notebook source
+
+
+-- COMMAND ----------
+
 WITH tbl_produtos AS
 (SELECT 
   t2.idVendedor,
@@ -75,7 +79,7 @@ FROM
   tbl_tamanho_produto t1 
 LEFT JOIN 
   tbl_categorias t2 
-    ON t1.idVendedor = t2.idVendedor; 
+    ON t1.idVendedor = t2.idVendedor
 
 
 
