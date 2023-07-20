@@ -1,4 +1,6 @@
 -- Databricks notebook source
+
+
 SELECT 
   t1.idPedido, 
   t2.idVendedor,
@@ -6,7 +8,9 @@ SELECT
   t1.dtPedido,
   t1.dtAprovado,  
   t1.dtEnvio, 
-  t1.dtEntregue
+  t1.dtEstimativaEntrega,
+  t1.dtEntregue, 
+  SUM(t2.vlFrete) AS TotalFrete 
 FROM 
   silver.olist.pedido t1 
 LEFT JOIN 
@@ -18,3 +22,12 @@ AND
   dtPedido < '2018-01-01'
 AND 
   t2.idVendedor IS NOT NULL
+GROUP BY 
+  t1.idPedido, 
+  t2.idVendedor,
+  t1.descSituacao, 
+  t1.dtPedido,
+  t1.dtAprovado,  
+  t1.dtEnvio, 
+  t1.dtEstimativaEntrega,
+  t1.dtEntregue
