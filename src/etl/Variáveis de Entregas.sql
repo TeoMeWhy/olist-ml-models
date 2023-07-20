@@ -1,6 +1,12 @@
 -- Databricks notebook source
 SELECT 
-*
+  t1.idPedido, 
+  t2.idVendedor,
+  t1.descSituacao, 
+  t1.dtPedido,
+  t1.dtAprovado,  
+  t1.dtEnvio, 
+  t1.dtEntregue
 FROM 
   silver.olist.pedido t1 
 LEFT JOIN 
