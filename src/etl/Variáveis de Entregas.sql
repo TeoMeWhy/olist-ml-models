@@ -1,6 +1,6 @@
 -- Databricks notebook source
 
-
+ WITH tbl_pedido (
 SELECT 
   t1.idPedido, 
   t2.idVendedor,
@@ -30,4 +30,6 @@ GROUP BY
   t1.dtAprovado,  
   t1.dtEnvio, 
   t1.dtEstimativaEntrega,
-  t1.dtEntregue
+  t1.dtEntregue) 
+
+SELECT * FROM tbl_pedido
