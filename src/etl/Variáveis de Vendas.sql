@@ -69,9 +69,9 @@ WHERE
 AND 
   idVendedor IS NOT NULL
 GROUP BY 
-  t2.idVendedor) 
+  t2.idVendedor), 
 
-
+tbl_intervalo AS (
 SELECT 
   idVendedor, 
   AVG(DATEDIFF(dtPedido, NextDatePedido)) AS AvgIntervaloVendas
@@ -82,9 +82,30 @@ FROM
   LAG(DATE(dtPedido),1) OVER (PARTITION BY IdVendedor ORDER BY dtPedido) AS NextDatePedido
 FROM 
   tbl_pedido)
-GROUP BY idVendedor 
+GROUP BY idVendedor) 
 
 
+SELECT 
+  '2018-01-01' DateRef, 
+  t1.*, 
+  t2.MAXValorPedido, 
+  t2.MAXValorPedido, 
+  t3.LTV, 
+  t3.qtnDiasBase, 
+  t4.AvgIntervaloVendas
+FROM 
+  tbl_summary t1 
+LEFT JOIN 
+  tbl_min_max t2 
+    ON t1.idVendedor = t2.idVendedor 
+LEFT JOIN 
+  tbl_life t3
+    ON t1.idVendedor = t3.idVendedor 
+LEFT JOIN 
+  tbl_intervalo t4
+    ON t1.idVendedor = t4.idVendedor 
+
+ 
 
 
 
