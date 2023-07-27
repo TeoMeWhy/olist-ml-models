@@ -1,6 +1,6 @@
 -- Databricks notebook source
 
- WITH tbl_pedido (
+ WITH tbl_pedido AS (
 SELECT 
   t1.idPedido, 
   t2.idVendedor,
@@ -32,4 +32,18 @@ GROUP BY
   t1.dtEstimativaEntrega,
   t1.dtEntregue) 
 
-SELECT * FROM tbl_pedido
+SELECT 
+    idVendedor,
+    COUNT(DISTINCT CASE WHEN  descSituacao  = 'canceled' THEN idPedido end) / COUNT (DISTINCT idPedido) AS pctPedidoCancelado, 
+    COUNT(DISTINCT CASE WHEN  DATE(COALESCE(dtEntregue,'2018-01-01')) > DATE(dtEstimativaEntrega) THEN idPedido END) / COUNT(DISTINCT CASE WHEN descSituacao  = 'delivered' THEN idPedido END) AS pctPedidoEntregueAtrasado, 
+    AVG(TotalFrete) AS AvgFrete,
+    PERCENTILE(TotalFrete, 0.50) AS MedianFrete, 
+    MAX(TotalFrete) AS MaxFrete, 
+    MIN(TotalFrete) AS MinFrete,
+    AVG(DATEDIFF(COALESCE(dtEntregue,'2018-01-01'), dtAprovado)) AS AvgDiasAprovadoEntrega,
+    AVG(DATEDIFF(COALESCE(dtEntregue,'2018-01-01'),dtPedido)) AS AvgDiasPedidoEntrega, 
+    AVG(DATEDIFF(dtEstimativaEntrega,COALESCE(dtEntregue,'2018-01-01'))) AS qntDiasEntregaPromessa
+FROM 
+  tbl_pedido
+GROUP BY 
+  idVendedor
