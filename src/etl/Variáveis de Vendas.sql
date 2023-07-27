@@ -1,0 +1,90 @@
+-- Databricks notebook source
+WITH tbl_pedido AS
+(
+SELECT 
+t2.*, t1.dtPedido
+FROM 
+  silver.olist.pedido t1 
+LEFT JOIN 
+  silver.olist.item_pedido t2 
+    ON t1.idPedido = t2.idPedido 
+WHERE 
+  dtPedido >= ADD_MONTHS('2018-01-01', -6)
+AND 
+  dtPedido < '2018-01-01'
+AND 
+  idVendedor IS NOT NULL
+), 
+
+tbl_summary AS 
+(SELECT 
+  idVendedor, 
+  COUNT(DISTINCT idPedido) AS QntPedidos, 
+  COUNT(DISTINCT DATE(dtPedido)) AS QntDias, 
+  COUNT(DISTINCT idProduto) AS QntItens, 
+  DATEDIFF('2018-01-01', MAX(dtPedido)) AS QntRecencia, 
+  SUM(vlPreco)/ COUNT(DISTINCT idPedido) AS AvgTicket, 
+  AVG(vlPreco) AS AvgValorProduto, 
+  MAX(vlPreco) AS MAXValorProduto, 
+  MIN(vlPreco) AS MINValorProduto, 
+  COUNT(idProduto) / COUNT(DISTINCT idPedido) AS AvgProdutoPedido 
+FROM 
+  tbl_pedido
+GROUP BY 
+  idVendedor), 
+
+
+tbl_min_max AS (
+SELECT 
+  idVendedor, 
+  MAX(vlPreco) AS MAXValorPedido, 
+  MIN(vlPreco) AS MINValorPedido
+FROM 
+  (
+  SELECT 
+    idVendedor, 
+    idPedido, 
+    SUM(vlPreco) AS vlPreco 
+  FROM 
+    tbl_pedido 
+  GROUP BY 
+    idVendedor, 
+    idPedido
+  ) 
+GROUP BY 
+  idVendedor), 
+
+tbl_life AS (
+SELECT 
+    t2.idVendedor, 
+    SUM(vlPreco) AS LTV,
+    MAX(DATEDIFF('2018-01-01', dtPedido)) AS qtnDiasBase 
+FROM 
+  silver.olist.pedido t1 
+LEFT JOIN 
+  silver.olist.item_pedido t2 
+    ON t1.idPedido = t2.idPedido 
+WHERE 
+  dtPedido < '2018-01-01'
+AND 
+  idVendedor IS NOT NULL
+GROUP BY 
+  t2.idVendedor) 
+
+
+SELECT 
+  idVendedor, 
+  AVG(DATEDIFF(dtPedido, NextDatePedido)) AS AvgIntervaloVendas
+FROM 
+(SELECT DISTINCT 
+  idVendedor, 
+  DATE(dtPedido) AS dtPedido,
+  LAG(DATE(dtPedido),1) OVER (PARTITION BY IdVendedor ORDER BY dtPedido) AS NextDatePedido
+FROM 
+  tbl_pedido)
+GROUP BY idVendedor 
+
+
+
+
+
