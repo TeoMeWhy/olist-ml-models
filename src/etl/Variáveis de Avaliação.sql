@@ -1,4 +1,6 @@
 -- Databricks notebook source
+
+
 WITH tb_pedido AS (
 
   SELECT DISTINCT 
@@ -31,7 +33,7 @@ ON
 
 
 SELECT 
-  '2018-01-01' AS dtRefe,
+  '2018-01-01' AS DateRef,
   idVendedor, 
   AVG(COALESCE(vlNota,0)) AS AvgNota, 
   percentile(vlNota, 0.5) AS MedNota, 

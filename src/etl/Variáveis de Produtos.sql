@@ -72,7 +72,7 @@ GROUP BY
 
 
 SELECT 
-  '2018-01-01' AS dtRefe, 
+  '2018-01-01' AS DateRef, 
   t1.*, 
   t2.*
 FROM 

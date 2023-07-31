@@ -33,6 +33,7 @@ GROUP BY
   t1.dtEntregue) 
 
 SELECT 
+    '2018-01-01' as DateRef, 
     idVendedor,
     COUNT(DISTINCT CASE WHEN  descSituacao  = 'canceled' THEN idPedido end) / COUNT (DISTINCT idPedido) AS pctPedidoCancelado, 
     COUNT(DISTINCT CASE WHEN  DATE(COALESCE(dtEntregue,'2018-01-01')) > DATE(dtEstimativaEntrega) THEN idPedido END) / COUNT(DISTINCT CASE WHEN descSituacao  = 'delivered' THEN idPedido END) AS pctPedidoEntregueAtrasado, 

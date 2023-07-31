@@ -1,5 +1,4 @@
 -- Databricks notebook source
-
 WITH tbl_clients AS (
   SELECT DISTINCT
     t1.idPedido,
@@ -35,7 +34,7 @@ GROUP BY
 ) 
 
 SELECT 
-  '2018-01-01' AS dTRefe, 
+  '2018-01-01' AS DateRef, 
   IdVendedor, 
   COUNT(DISTINCT descUF) AS QtyDistinctUFsPedidos, 
   SUM(TotalPedidos) AS TotalPedidos, 
@@ -114,34 +113,3 @@ GROUP BY
 -- tbl_pedidos_clients
 -- WHERE 
 --   idVendedor = '0ea22c1cfbdc755f86b9b54b39c16043'
-
--- COMMAND ----------
-
-
-SC
-RO
-PI
-AM
-RR
-GO
-TO
-MT
-SP
-ES
-PB
-RS
-MS
-AL
-MG
-PA
-BA
-SE
-PE
-CE
-RN
-RJ
-MA
-AC
-DF
-PR
-AP

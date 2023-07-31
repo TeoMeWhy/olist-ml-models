@@ -11,6 +11,8 @@
 
 -- COMMAND ----------
 
+-- CREATE TABLE fs_seller_pagamento AS 
+
 WITH tb_pedidos AS (
 
   SELECT DISTINCT 
@@ -104,7 +106,7 @@ tb_card AS (
    idVendedor 
 ) 
 
-SELECT '2018-01-01' AS dTRefe, t1.*, t2.* EXCEPT(t2.idVendedor) 
+SELECT '2018-01-01' AS DateRef, t1.*, t2.* EXCEPT(t2.idVendedor) 
 FROM tb_summary t1 
 LEFT JOIN tb_card t2 
 ON t1.idVendedor = t2.idVendedor
