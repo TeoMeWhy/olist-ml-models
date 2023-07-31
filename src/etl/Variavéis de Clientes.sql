@@ -1,4 +1,6 @@
 -- Databricks notebook source
+CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_cliente AS
+
 WITH tbl_clients AS (
   SELECT DISTINCT
     t1.idPedido,

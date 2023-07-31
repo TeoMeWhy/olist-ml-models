@@ -11,7 +11,7 @@
 
 -- COMMAND ----------
 
--- CREATE TABLE fs_seller_pagamento AS 
+CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_pagamento AS
 
 WITH tb_pedidos AS (
 

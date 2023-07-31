@@ -1,4 +1,6 @@
 -- Databricks notebook source
+CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_vendas AS
+
 WITH tbl_pedido AS
 (
 SELECT 
@@ -88,8 +90,8 @@ GROUP BY idVendedor)
 SELECT 
   '2018-01-01' DateRef, 
   t1.*, 
-  t2.MAXValorPedido, 
-  t2.MAXValorPedido, 
+  t2.MAXValorPedido,  
+  t2.MINValorPedido, 
   t3.LTV, 
   t3.qtnDiasBase, 
   t4.AvgIntervaloVendas

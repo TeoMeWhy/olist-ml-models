@@ -1,5 +1,5 @@
 -- Databricks notebook source
-
+CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_avaliacao AS 
 
 WITH tb_pedido AS (
 

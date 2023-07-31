@@ -3,6 +3,8 @@
 
 -- COMMAND ----------
 
+CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_produto AS
+
 WITH tbl_produtos AS
 (SELECT 
   t2.idVendedor,
@@ -74,7 +76,7 @@ GROUP BY
 SELECT 
   '2018-01-01' AS DateRef, 
   t1.*, 
-  t2.*
+  t2.* EXCEPT (t2.idVendedor)
 FROM 
   tbl_tamanho_produto t1 
 LEFT JOIN 

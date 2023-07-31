@@ -1,6 +1,7 @@
 -- Databricks notebook source
+CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_entrega AS
 
- WITH tbl_pedido AS (
+WITH tbl_pedido AS (
 SELECT 
   t1.idPedido, 
   t2.idVendedor,
