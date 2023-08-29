@@ -1,6 +1,3 @@
--- Databricks notebook source
--- CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_cliente AS
-
 WITH tbl_clients AS (
   SELECT DISTINCT
     t1.idPedido,
@@ -16,9 +13,9 @@ WITH tbl_clients AS (
     silver.olist.cliente t3 
       ON t1.idCliente = t3.idCliente 
   WHERE 
-    t1.dtPedido < '2018-01-01'
+    t1.dtPedido < '{date}'
   AND 
-    t1.dtPedido >= ADD_MONTHS('2018-01-01', -6)
+    t1.dtPedido >= ADD_MONTHS('{date}', -6)
   AND 
     idVendedor IS NOT NULL), 
 
@@ -36,7 +33,7 @@ GROUP BY
 ) 
 
 SELECT 
-  '2018-01-01' AS DateRef, 
+  '{date}' AS DateRef, 
   IdVendedor, 
   COUNT(DISTINCT descUF) AS QtyDistinctUFsPedidos, 
   SUM(TotalPedidos) AS TotalPedidos, 
@@ -71,47 +68,3 @@ FROM
   tbl_pedidos_clients
 GROUP BY 
   IdVendedor
-
--- COMMAND ----------
-
--- WITH tbl_clients AS (
---   SELECT DISTINCT
---     t1.idPedido,
---     t1.idCliente,
---     t2.idVendedor,
---     t3.descUF
---   FROM 
---     silver.olist.pedido AS t1
---   LEFT JOIN 
---     silver.olist.item_pedido as t2
---       ON t1.idPedido = t2.idPedido
---   LEFT JOIN 
---     silver.olist.cliente t3 
---       ON t1.idCliente = t3.idCliente 
---   WHERE 
---     t1.dtPedido < '2018-01-01'
---   AND 
---     t1.dtPedido >= ADD_MONTHS('2018-01-01', -6)
---   AND 
---     idVendedor IS NOT NULL), 
-
--- tbl_pedidos_clients (
--- SELECT 
---   idVendedor, 
---   descUF,
---   COUNT(DISTINCT idPedido) AS TotalPedidos, 
---   COUNT(DISTINCT idCliente) AS TotalClients 
--- FROM 
---   tbl_clients 
--- GROUP BY 
---   idVendedor, 
---   descUF
--- ) 
-
--- SELECT 
---   *, 
---   TotalPedidos / 70
--- FROM 
--- tbl_pedidos_clients
--- WHERE 
---   idVendedor = '0ea22c1cfbdc755f86b9b54b39c16043'

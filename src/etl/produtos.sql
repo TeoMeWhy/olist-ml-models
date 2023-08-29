@@ -1,10 +1,3 @@
--- Databricks notebook source
-
-
--- COMMAND ----------
-
--- CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_produto AS
-
 WITH tbl_produtos AS
 (SELECT 
   t2.idVendedor,
@@ -18,9 +11,9 @@ LEFT JOIN
   silver.olist.produto t3 
     ON t2.idProduto = t3.idProduto 
 WHERE 
-  dtPedido >= ADD_MONTHS('2018-01-01', -6)
+  dtPedido >= ADD_MONTHS('{date}', -6)
 AND 
-  dtPedido < '2018-01-01'
+  dtPedido < '{date}'
 AND 
   t2.idVendedor IS NOT NULL), 
 
@@ -74,7 +67,7 @@ GROUP BY
 
 
 SELECT 
-  '2018-01-01' AS DateRef, 
+  '{date}' AS DateRef, 
   t1.*, 
   t2.* EXCEPT (t2.idVendedor)
 FROM 
@@ -82,31 +75,3 @@ FROM
 LEFT JOIN 
   tbl_categorias t2 
     ON t1.idVendedor = t2.idVendedor
-
-
-
-
--- COMMAND ----------
-
--- COMMAND ----------
-
-
--- ENCONTRANDO OS TOP 15 PRODUTOS 
-
-
--- SELECT 
---   descCategoria
--- FROM 
---   silver.olist.pedido t1 
--- LEFT JOIN 
---   silver.olist.item_pedido t2 
---     ON t1.idPedido = t2.idPedido 
--- LEFT JOIN 
---   silver.olist.produto t3 
---     ON t2.idProduto = t3.idProduto 
--- WHERE 
---   t2.idVendedor IS NOT NULL
--- GROUP BY 
---   descCategoria
--- ORDER BY COUNT( DISTINCT t1.idPedido)  DESC 
--- LIMIT 15 

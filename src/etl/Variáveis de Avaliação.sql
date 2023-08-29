@@ -1,5 +1,6 @@
 -- Databricks notebook source
-CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_avaliacao AS 
+-- DROP TABLE IF EXISTS sandbox.analystics_churn_model.fs_vendedor_avaliacao; 
+-- CREATE TABLE sandbox.analystics_churn_model.fs_vendedor_avaliacao AS 
 
 WITH tb_pedido AS (
 
@@ -53,6 +54,10 @@ GROUP BY
 
 
 
+
+-- COMMAND ----------
+
+select * from analytics.asn.fs_seller_avaliacao 
 
 -- COMMAND ----------
 

@@ -58,5 +58,5 @@ WHERE QntRecencia <=45
 -- COMMAND ----------
 
 
-SELECT * FROM  sandbox.analystics_churn_model.fs_vendedor_vendas
+SELECT * FROM  sandbox.analystics_churn_model.fs_vendedor_pagamento
 WHERE QntRecencia <=45
