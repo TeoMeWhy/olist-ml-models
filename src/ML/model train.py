@@ -107,7 +107,9 @@ with mlflow.start_run():
                                     max_depth=10,
                                     n_estimators=400)
 
-    # Criando o pipeline
+    # Criando o pipeline -- Ajuda a garantir o que está sendo feito para todo o código, seja ele em produção ou em dev, es
+    # esse pipeline recebe um conjunto de dados e realiza todos os procedimentos para esses conjuntos. 
+    
     model_pipeline = pipeline.Pipeline([("Imputer -100", imputer_minus_100),
                                         ("Imputer 0", imputer_0),
                                         ("LGBM Model", model),
