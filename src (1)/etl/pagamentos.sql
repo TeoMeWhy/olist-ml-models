@@ -41,8 +41,9 @@ SELECT idVendedor,
 FROM base_geral
 
 GROUP BY idVendedor, descTipoPagamento
-ORDER BY idVendedor)
+ORDER BY idVendedor),
 
+base_perc_pagamentos AS (
 SELECT idVendedor,
   SUM(CASE WHEN descTipoPagamento = 'credit_card' THEN qtd_vendas ELSE 0 END) AS qtd_vendas_credit_card,
   SUM(CASE WHEN descTipoPagamento = 'credit_card' THEN valor_total ELSE 0 END) AS valor_vendas_credit_card,
@@ -62,7 +63,33 @@ SELECT idVendedor,
 
 FROM base_agrupada
 
-GROUP BY idVendedor
+GROUP BY idVendedor),
+
+base_cartao AS (
+SELECT idVendedor,
+AVG(nrParcelas) AS media_de_parcelas,
+PERCENTILE(nrParcelas, 0.5) AS mediana_de_parcelas,
+MAX(nrParcelas) AS max_parcelas,
+MIN(nrParcelas) AS min_parcelas
+
+FROM base_geral
+
+WHERE descTipoPagamento = 'credit_card'
+
+GROUP BY idVendedor)
+
+SELECT a.*,
+  b.media_de_parcelas,
+  b.mediana_de_parcelas,
+  b.max_parcelas,
+  b.min_parcelas,
+  '2018-01-01'  AS data_refenrencia
+
+FROM base_perc_pagamentos AS a
+
+LEFT JOIN base_cartao AS b
+  ON a.idVendedor = b.idVendedor  
+
 
 -- COMMAND ----------
 
