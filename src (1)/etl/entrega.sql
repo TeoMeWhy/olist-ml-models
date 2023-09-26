@@ -15,7 +15,8 @@ WITH base_pedido AS(
     ON a.idPedido = b.idPedido
 
   WHERE a.dtPedido < '2018-01-01'
-    AND a.dtPedido >= add_months('2018-01-01', -6)
+    AND a.dtPedido >= add_months('2018-01-01', -6
+    AND idVendedor IS NOT NULL)
 
   GROUP BY a.idPedido,
   b.idVendedor,
@@ -35,7 +36,8 @@ WITH base_pedido AS(
     MAX(total_frete) AS max_frete,
     AVG(DATEDIFF(coalesce(dtEntregue, '2018-01-01'), dtAprovado)) AS qtd_dias_aprovado_entrega,
     AVG(DATEDIFF(coalesce(dtEntregue, '2018-01-01'), dtPedido)) AS qtd_dias_pedido_entrega,
-    AVG(DATEDIFF(dtEstimativaEntrega, coalesce(dtEntregue, '2018-01-01'))) AS qtd_dias_entrega_promessa
+    AVG(DATEDIFF(dtEstimativaEntrega, coalesce(dtEntregue, '2018-01-01'))) AS qtd_dias_entrega_promessa,
+    '2018-01-01' AS data_referencia
 
   FROM base_pedido
 
