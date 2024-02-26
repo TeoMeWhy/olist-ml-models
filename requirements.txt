@@ -1,7 +1,0 @@
-feature_engine==1.6.0
-lightgbm==3.3.5
-pandas==2.0.0
-scikit_learn==1.2.2
-scikit_plot==0.3.7
-SQLAlchemy==2.0.9
-tqdm==4.65.0
