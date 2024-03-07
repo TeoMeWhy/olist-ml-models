@@ -8,6 +8,8 @@ Este projeto é resultado de uma parceria entre o canal [Téo Me Why](https://ww
 
 Se inscreva [aqui](https://forms.gle/bXEdjsjYWt3K9euC7) para receber o certificado de partipação: [Formulário Docs](https://forms.gle/bXEdjsjYWt3K9euC7)
 
+Baixe os [dados aqui](https://drive.google.com/file/d/1YEohXFk7zSajy3Nitzi_svDnu9x4ZFn8/view).
+
 ## +12 horas de conteúdo gratuito sobre Machine Learning
 
 Nosso objetivo será, a priori, criar um modelo de Machine Learning para ajudar o negócio da empresa Olist. Dentre as possibilidades temos:
